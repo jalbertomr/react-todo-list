@@ -10,9 +10,16 @@ class TextDisplay extends Component {
         };
     }
 
+    handleClick() {
+        console.log('Borra una Letra clicked');
+        this.props.deleteLetter();
+    }
+
     render() {
         return (
-            <div>TextDisplay this.props.text: {this.props.text} </div>
+            <div>TextDisplay this.props.text: {this.props.text}
+            <button onClick={this.handleClick.bind(this)}>Borra una Letra</button>
+            </div>
         );
     }
 }

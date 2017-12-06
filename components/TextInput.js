@@ -11,6 +11,13 @@ class TextInput extends Component {
         };
     }
 
+    deleteLetter() {
+      this.setState(
+      { TextInputValue: this.state.TextInputValue.substr(0, this.state.TextInputValue.length - 1) }
+      );
+      console.log('delete letter');
+    }
+
     handleChange(event) {
         this.setState({ TextInputValue: event.target.value });
     }
@@ -25,7 +32,10 @@ class TextInput extends Component {
             onChange={this.handleChange.bind(this)}
             /><br />
             Component TextDisplay->
-            <TextDisplay text={this.state.TextInputValue} />
+            <TextDisplay
+              text={this.state.TextInputValue}
+              deleteLetter={this.deleteLetter.bind(this)}
+            />
         </div>
         );
     }
