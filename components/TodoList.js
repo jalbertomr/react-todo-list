@@ -4,7 +4,13 @@ class TodoList extends Component {
 
     render() {
         return (
-            <div>Lista de Pendientes </div>
+        <ul>
+        {
+            this.props.todos.map((todo) => {
+               return <li key={todo.id}>{todo.text} </li>
+            })
+        }
+        </ul>
         );
     }
 }
