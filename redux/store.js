@@ -1,15 +1,14 @@
-//import logger from 'redux-logger';
+import logger from 'redux-logger';
 import { applyMiddleware, compose, createStore } from 'redux';
 import reducer from './reducer';
 
-//const finalCreateStore = compose(applyMiddleware(logger())
-//                        )(createStore);
+let finalCreateStore = compose(applyMiddleware(logger))(createStore);
 
 // configureStore(initialState){
 //     initialState = initialState || { todos: [] }
 // }
 
-
+/*
 function logger({ getState }) {
     return next => action => {
         console.log('siguiente dispatch', action);
@@ -21,6 +20,7 @@ function logger({ getState }) {
         return returnValue;
     };
 }
+*/
 
 /*let miStore = createStore(reducer,
                        { ' todos: []' },
@@ -33,6 +33,6 @@ miStore.dispatch({
 */
 
 export default function configureStore(initialState = { todos: [] }) {
-    return createStore(reducer, initialState, applyMiddleware(logger));
+    return finalCreateStore(reducer, initialState);
 }
 
